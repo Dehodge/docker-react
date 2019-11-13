@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+    
+before_install:
+    - docker build -t hodgie/docker-react -f Dockerfile.dev . 
+
+script:
+    - docker run -e CI=true hodgie/docker-react npm run test
